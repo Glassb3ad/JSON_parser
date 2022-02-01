@@ -1,4 +1,4 @@
-const par = require('./index')
+const par = require('./JSONparser')
 const axios = require('axios')
 
 const test2 = '{"ankka":"234","possu":12,"kissa":true,"kilpikonna":"karvainen","Emilia":{"Kissa2":100,"Kissa3": {"karvoitus":"tuuhea", "vihainen":true}},"JERE":{"KISSA":23,"KISSAA":34.3}, "taulukko":[234, 12, "KISSA"]}'
