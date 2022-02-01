@@ -34,7 +34,6 @@ class JSONparser {
                     }
                     else if(typeof(input[properties[i]]) === 'object'){    
                         result = result + this.toJSON(input[properties[i]])
-                        //console.log(typeof(input[properties[i]]))
                     }
                     else {
                         result = result + input[properties[i]]
@@ -103,18 +102,9 @@ class JSONparser {
             //Code that runs the parsing process -->
             let i = 0
             for(i = 0; i < str.length; i++){
-                /*
-                console.log("String: " + str.slice(i))
-                console.log("isValue: " + isValue )
-                console.log("isString: " + isString )
-                console.log("Name: " + name )
-                console.log("value: " + value )
-                console.log("i: " + i)
-                */
                 if(isString) buildString(str[i])
                 else{
                     if(str[i].search(/\s/) != -1){
-                        //console.log("Whitespace found!")
                         continue
                     }
                     if(str[i] === ':') {
@@ -145,7 +135,6 @@ class JSONparser {
                     addChar(str[i])
                 }   
             }
-            //console.log([entity, i+1])
             return [entity, i+1]
         }
         //Array case
@@ -166,7 +155,6 @@ class JSONparser {
                 else{
                     //checks if current index contains whispace character and ignores it
                     if(str[i].search(/\s/) != -1){
-                        //console.log("Whitespace found!")
                         continue
                     }
                     if(str[i] === ']') {
@@ -202,6 +190,7 @@ const getValue = (s) => {
     if (s[0] === '"' && s[s.length-1] === '"') return s.slice(1,s.length-1)
     if (s === 'true') return true
     if (s === 'false') return false
+    if(s === 'null') return null
     if (! Number.isNaN(Number(s))) return Number.parseFloat(s)
     throw new Error(s + " is not in a correct format to be JSON") 
 }
